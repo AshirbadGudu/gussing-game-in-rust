@@ -1,4 +1,6 @@
+use colored::*;
 use rand::Rng;
+use std::cmp::Ordering;
 use std::io;
 
 fn main() {
@@ -31,17 +33,17 @@ fn main() {
         // Compare the guessed number to the secret number
         match guess.cmp(&secret_number) {
             // If the guessed number is equal to the secret number
-            std::cmp::Ordering::Equal => {
-                println!("You win!");
+            Ordering::Equal => {
+                println!("{}", "You win!".green());
                 break;
             }
             // If the guessed number is less than the secret number
-            std::cmp::Ordering::Less => {
-                println!("Too small!");
+            Ordering::Less => {
+                println!("{}", "Too small!".red());
             }
             // If the guessed number is greater than the secret number
-            std::cmp::Ordering::Greater => {
-                println!("Too big!");
+            Ordering::Greater => {
+                println!("{}", "Too big!".red());
             }
         }
     }
